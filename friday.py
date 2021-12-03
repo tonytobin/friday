@@ -13,10 +13,8 @@ import wikipedia
 import bs4 as bs
 import lxml
 import urllib.request
-import certifi
 import requests
 import subprocess
-import ssl
 import pyttsx3
 import serial
 
