@@ -1,13 +1,15 @@
+//tested in a nodemcu 12e(esp8266)
+//connect different color led to pin 12,13,15
+
 char data;
 char mcu;
-void setup() {
-  // Open serial communications and wait for port to open:
+void setup() {  
   pinMode(15,OUTPUT);
   pinMode(13,OUTPUT);
   pinMode(12,OUTPUT);
   Serial.begin(9600);
   while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+    ; // wait for serial port to connect.
   }
 }
 
@@ -16,23 +18,23 @@ void loop() { // run over and over
     data=(Serial.read());
     
   }
-  //Serial.println(data);
     delay(10);
     if(data=='l'){
-     // Serial.println("welcome sir");
+     // simulates listening
       digitalWrite(12,0);
       digitalWrite(15,0);
       digitalWrite(13,1);
       
     }
     if(data=='s'){
-     // Serial.println("goodbye sir");
+      //simulates speaking
      digitalWrite(13,0);
      digitalWrite(15,0);
      digitalWrite(12,1);
       
     }
     if(data=='q'){
+      //simulates shutdown
       digitalWrite(12,0);
       digitalWrite(13,0);
       for(int i =1;i<5;i++){
@@ -49,6 +51,7 @@ void loop() { // run over and over
       data=' ';
     }
     if(data=='e'){
+      //turn off all pins
       digitalWrite(12,0);
       digitalWrite(13,0);
       digitalWrite(15,0);
